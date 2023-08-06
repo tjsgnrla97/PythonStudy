@@ -513,3 +513,289 @@
 #     print(f"{customer}, 커피가 준비되었습니다.")
 
 # 19. while(반복문)
+# customer = "울리시아"
+# index = 5
+# while index>=1:
+#     print(f"{customer}, 커피가 준비 되었습니다. {index} 번 남았어요.")
+#     index -= 1
+#     if index==0:
+#         print("커피는 폐기처분되었습니다.")
+# customer = "티스토리"
+# index=1
+# while True:
+#     print(f"{customer}, 커피가 준비 되었습니다. 호출 {index} 회.")
+#     index += 1
+# customer = "벨로그"
+# person = "Unknown"
+
+# while person != customer:
+#     print(f"{customer}, 커피가 준비 되었습니다.")
+#     person = input("이름이 어떻게 되세요?")
+
+# 20. continue와 break
+# absent = [2, 5] #결석
+# no_book = [7] #책을 깜빡했음
+# for student in range(1,11): #1~10번 출석번호
+#     if student in absent:
+#         continue
+#     if student in no_book:
+#         print(f"오늘 수업 여기까지. {student}는 교무실로 따라와")
+#         break
+#     print(f"{student}, 책을 읽어봐")
+
+# 21. 한줄 for 문
+# 출석번호가 1 2 3 4, 앞에 100을 붙이기로 함 -> 101,102,103,104.
+# students = [1,2,3,4,5]
+# print(students)
+# students = [i+100 for i in students]
+# print(students)
+
+# 학생 이름을 길이로 변환
+# students = ["Ulisia", "Velog", "Tstory"]
+# students = [len(i) for i in students]
+# print(students)
+
+# 학생 이름을 대문자로 변환
+# students = ["Ulisia","Velog","Tstory"]
+# students = [i.upper() for i in students]
+# print(students)
+
+# Quiz) 5
+# 당신은 Cocoa 서비스를 이용하는 택시 기사님입니다.
+# 50명의 승객과 매칭 기회가 있을 때, 총 탑승 승객 수를 구하는 프로그램을 작성하시오.
+
+# 조건 1 : 승객별 운행 소요 시간은 5분~50분 사이의 난수로 정해집니다.
+# 조건 2 : 당신은 소요 시간 5분 ~ 15분 사이의 승객만 매칭해야 합니다.
+
+# (출력문 예제)
+# [O] 1번째 손님 (소요시간 : 15분)
+# [ ] 2번째 손님 (소요시간 : 50분)
+# [O] 3번째 손님 (소요시간 : 5분)
+# ...
+# [ ] 50번째 손님 (소요시간 : 16분)
+
+# 총 탑승 승객 : 2 분
+# from random import *
+# ans = 0 #총 탑승 승객
+# for i in range(1,51): #1~50이라는 수 (승객)
+#     time = randrange(5,51) #5~50난수
+#     if 5 <= time <= 15:
+#         print(f"[O] {i}번째 손님 (소요시간 : {time}분)")
+#         ans += 1
+#     else:
+#         print(f"[ ] {i}번째 손님 (소요시간 : {time}분)")
+# print(f"총 탑승 승객 : {ans} 분")
+
+# 22. 함수
+
+# def open_account():
+#     print("새로운 계좌가 생성되었습니다.")
+# open_account()
+
+# def deposit(balance, money):
+#     print(f"입금이 완료되었습니다. 잔액은 {balance+money} 원입니다.")
+#     return balance + money
+
+
+# def withdraw(balance, money):
+#     if balance >= money:
+#         print(f"출금이 완료되었습니다. 잔액은 {balance - money}원입니다.")
+#         return balance - money
+#     else:
+#         print(f"출금이 완료되지 않았습니다. 잔액은 {balance}원입니다.")
+#         return balance
+
+# def withdraw_night(balance, money):
+#     commission = 100
+#     return commission, balance - money - commission
+
+# balance  = 0
+# balance = deposit(balance,1000)
+# balance = withdraw(balance,500)
+
+# commission, balance = withdraw_night(balance, 500)
+# print(f"수수료는 {commission}원이며, 잔액은 {balance}원입니다.")
+
+# 23. 기본값
+# def profile(name, age, main_lang):
+#     print(f"이름 : {name}\t나이 : {age}\t주 사용 언어 : {main_lang}")
+
+# profile("울리시아", 20, "Python")
+# profile("티스토리", 24, "Java")
+
+#같은 학교 같은 학년 같은 밥 같은 수업.
+
+# def profile(name, age=17, main_lang="Python"):
+#     print(f"이름 : {name}\t나이 : {age}\t주 사용 언어 : {main_lang}")
+
+# profile("울리시아")
+# profile("티스토리")
+
+# 24. 키워드값
+
+# def profile(name, age, main_lang):
+#     print(name, age, main_lang)
+
+# profile(name="울리시아",main_lang="Python",age=20)
+# profile(main_lang="Java",age=24,name="티스토리")
+
+# 25. 가변인자
+# def profile(name, age, lang1, lang2, lang3, lang4, lang5):
+#     print(f"이름 : {name}\t나이 : {age}\t",end=" ")
+#     print(lang1, lang2, lang3, lang4, lang5)
+
+# def profile(name, age, *language):
+#     print(f"이름 : {name}\t나이 : {age}\t",end=" ")
+#     for lang in language:
+#         print(lang, end=" ")
+#     print()
+
+# profile("울리시아", 20, "Python", "Java", "C", "C++", "C#")
+# profile("티스토리", 24, "Kotlin", "Swift")
+
+# 26. 지역변수와 전역변수
+# gun = 10
+
+# def checkpoint(soldiers):
+#     global gun #전역 공간에 있는 gun 사용
+#     gun -= soldiers
+#     print(f"[함수 내] 남은 총 : {gun}")
+
+# print(f"전체 총 : {gun}")
+# checkpoint(2)
+# print(f"남은 총 : {gun}")
+
+# gun = 10
+
+# def checkpoint_ret(gun, soldiers):
+#     gun -= soldiers
+#     print(f"[함수 내] 남은 총 : {gun}")
+#     return gun
+
+# print(f"전체 총 : {gun}")
+# gun = checkpoint_ret(gun,2)
+# print(f"남은 총 : {gun}")
+
+# Quiz) 6
+
+# 표준 체중을 구하는 프로그램을 작성하시오
+
+# * 표준 체중 : 각 개인의 키에 적당한 체중
+
+# (성별에 따른 공식)
+
+# 남자 : 키(m) * 키(m) * 22
+# 여자 : 키(m) * 키(m) * 21
+
+# 조건 1 : 표준 체중은 별도의 함수 내에서 계산
+#         * 함수명 : std_weight
+#         * 전달값 : 키(height), 성별(gender)
+# 조건 2 : 표준 체중은 소수점 둘째자리까지 표시
+
+# (출력 예제)
+# 키 175cm 남자의 표준 체중은 67.38kg 입니다.
+
+# def std_weight(height, gender):
+#     if gender == "male":
+#         print(f"키 {int(height*100)}cm 남자의 표중 체중은 {height * height * 22 : .2f}kg 입니다.")
+#     if gender == "female":
+#         print(f"키 {int(height*100)}cm 여자의 표준 체중은 {height * height * 21 : .2f}kg 입니다.")
+
+# def std_weight(height, gender):
+#     if gender == "남자":
+#         return height * height * 22
+#     else:
+#         return height * height * 21
+
+# height = 175 #cm 단위
+# gender = "남자"
+# weight = round(std_weight(height / 100, gender),2)
+# print("키 {0}cm {1}의 표준 체중은 {2}kg 입니다.".format(height, gender, weight))
+
+# 27. 표준 입출력
+
+# print("Python", "Java")
+# print("Python"+"Java")
+# print("Python","Java","JavaScript",sep=" vs ")
+# print("Python","Java",sep=" , ",end="?")
+# print("무엇이 더 재밌을까요?")
+
+# import sys
+# print("Python", "Java", file=sys.stdout)
+# print("Python", "Java", file=sys.stderr)
+
+# 시험 성적
+# scores = {"수학":0, "영어":50, "코딩":100}
+# for subject, score in scores.items():
+#     # print(subject, score)
+#     print(subject.ljust(8), str(score).rjust(4),sep=":")
+
+# 은행 대기순번표
+# 001, 002, 003, ...
+# for num in range(1,21):
+#     print("대기번호 : "+str(num).zfill(3))
+
+# 사용자 입력을 통해서 값을 받게되면 항상 str 타입으로 받게 된다.
+# answer = input("아무 값이나 입력하세요 : ")
+# print(type(answer))
+# print("입력하신 값은 "+answer+"입니다.")
+
+# 28. 다양한 출력 포맷
+# 빈 자리는 빈공간으로 두고, 오른쪽 정렬을 하되, 총 10자리 공간을 확보
+# print("{0: >10}".format(500))
+# 양수일 땐 +로 표시, 음수일 땐 -로 표시
+# print("{0: >+10}".format(500))
+# print("{0: >+10}".format(-500))
+# 왼쪽 정렬하고, 빈칸으로 _로 채움
+# print("{0:_<+10}".format(500))
+# 3자리 마다 콤마를 찍어주기
+# print("{0:,}".format(100000000000))
+# 3자리 마다 콤마를 찍어주기, +- 부호도 붙이기
+# print("{0:+,}".format(100000000000))
+# print("{0:+,}".format(-100000000000))
+# 3자리 마다 콤마를 찍어주기, 왼쪽정렬, 부호 붙이기, 자릿수 확보하기
+# 돈이 많으면 행복하니까 빈 자리는 ^로 채워주기
+# print("{0:^<+30,}".format(100000000000000))
+# 소수점 출력
+# print("{0:f}".format(5/3))
+# 소수점 특정 자리수 까지만 표시 (소수점 3째 자리에서 반올림)
+# print("{0:.2f}".format(5/3))
+
+# 29. 파일 입출력
+# w 쓰기용도(덮어쓰기)
+# score_file = open("score.txt", "w", encoding="utf8")
+# print("수학 : 0", file=score_file)
+# print("영어 : 50", file=score_file)
+# 파일을 열었으면 항상 닫아주기까지 해야함
+# score_file.close()
+
+#이미 내용이 존재하는 파일위에 뒤에 이어서 쓰기 a(append)
+# score_file = open("score.txt", "a", encoding="utf8")
+# score_file.write("과학 : 80")
+#print와 달리 write에는 줄바꿈이 자동으로 들어 있지 않음
+# score_file.write("\n코딩 : 100")
+# score_file.close()
+
+#파일에 있는 내용을 읽어오기 r
+# score_file = open("score.txt", "r", encoding="utf8")
+# 한번에 불러와서 읽기
+# print(score_file.read())
+# score_file.close()
+
+#한줄씩 불러와서 읽기
+# score_file = open("score.txt", "r", encoding="utf8")
+# 줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
+# print(score_file.readline(), end="")
+# print(score_file.readline())
+# print(score_file.readline())
+# print(score_file.readline())
+# score_file.close()
+
+# 전체 줄 수를 모를 때
+score_file = open("score.txt", "r", encoding="utf8")
+while True:
+    line = score_file.readline()
+    if not line:
+        break
+    print(line)
+score_file.close()
