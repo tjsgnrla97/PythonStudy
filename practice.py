@@ -792,10 +792,203 @@
 # score_file.close()
 
 # 전체 줄 수를 모를 때
-score_file = open("score.txt", "r", encoding="utf8")
-while True:
-    line = score_file.readline()
-    if not line:
-        break
-    print(line)
-score_file.close()
+# score_file = open("score.txt", "r", encoding="utf8")
+# while True:
+#     line = score_file.readline()
+#     if not line:
+#         break
+#     print(line, end="")
+# score_file.close()
+
+# score_file = open("score.txt", "r", encoding="utf8")
+# lines = score_file.readlines() #list 형태로 저장
+# for line in lines:
+#     print(line, end="")
+
+# score_file.close()
+
+# 30. pickle
+# 프로그램 상에서 우리가 사용하고 있는 데이터를 파일 형태로 저장해주는 것
+# import pickle
+#wb b(binary) pickle을 쓸 땐 항상 binary타입을 매칭
+#pickle에선 따로 encoding 타입을 설정할 필요가 없음
+# profile_file = open("profile.pickle", "wb")
+# profile = {"이름":"울리시아","나이":26,"취미":["코딩","유튜브 시청"]}
+# print(profile)
+#profile에 있는 정보를 file에 저장
+# pickle.dump(profile,profile_file) 
+# profile_file.close()
+
+# profile_file = open("profile.pickle","rb")
+# file에 있는 정보를 profile 에 불러오기
+# profile = pickle.load(profile_file)
+# print(profile)
+# profile_file.close()
+
+# 31. with
+# close 할 필요 없이 with문을 빠져나오면서 자동으로 닫힌다.
+
+# import pickle
+
+# with open("profile.pickle", "rb") as profile_file:
+#     print(pickle.load(profile_file))
+
+# with open("study.txt", "w", encoding="utf8") as study_file:
+#     study_file.write("파이썬을 열심히 공부하고 있어요.")
+
+# with open("study.txt", "r", encoding="utf8") as study_file:
+#     print(study_file.read())
+
+# Quiz) 7
+
+# 당신의 회사에서는 매주 1회 작성해야 하는 보고서가 있습니다.
+# 보고서는 항상 아래와 같은 형태로 출력되어야 합니다.
+
+# - X 주차 주간보고 -
+# 부서 :
+# 이름 :
+# 업무 요약 :
+
+# 1주차부터 50주차까지의 보고서 파일을 만드는 프로그램을 작성하시오.
+
+# 조건 : 파일명은 '1주차.txt', '2주차.txt', ... 와 같이 만듭니다.
+
+# for i in range(1,51):
+#     with open("quiz7/"+str(i)+"주차.txt","w",encoding="utf8") as weekly_file:
+#         weekly_file.write(f"- {i} 주차 주간보고 -\n")
+#         weekly_file.write(f"부서 : \n")
+#         weekly_file.write(f"이름 : \n")
+#         weekly_file.write(f"업무 요약 : \n")
+
+# 32. 클래스
+
+# 붕어빵 틀
+# 붕어빵 틀에 재료를 넣으면 붕어빵을 무한정 만들수 있다.
+
+# 마린 : 공격 유닛, 군인, 총을 쓸 수 있음
+# name = "마린" # 유닛의 이름
+# hp = 40 # 유닛의 체력
+# damage = 5 # 유닛의 공격력
+
+# print(f"{name} 유닛이 생성되었습니다.")
+# print(f"체력 {hp}, 공격력 {damage}")
+
+# 탱크 : 공격 유닛, 탱크, 포를 쓸 수 있는데, 일반 모드 / 시즈 모드.
+# tank_name = "탱크"
+# tank_hp = 150
+# tank_damage = 35
+
+# print(f"{tank_name} 유닛이 생성되었습니다.")
+# print(f"체력 {tank_hp}, 공격력 {tank_damage}")
+
+# tank_name2 = "탱크2"
+# tank_hp2 = 150
+# tank_damage2 = 35
+
+# print(f"{tank_name2} 유닛이 생성되었습니다.")
+# print(f"체력 {tank_hp2}, 공격력 {tank_damage2}")
+
+# def attack(name, location, damage):
+#     print(f"{name} : {location} 방향으로 적군을 공격합니다. [공격력 {damage}]")
+
+# attack(name, "1시", damage)
+# attack(tank_name, "1시", tank_damage)
+# attack(tank_name2, "1시", tank_damage2)
+
+# class Unit:
+#     def __init__(self, name, hp, damage):
+#         self.name = name
+#         self.hp = hp
+#         self.damage = damage
+#         print(f"{self.name} 유닛이 생성 되었습니다.")
+#         print(f"체력 {self.hp}, 공격력 {self.damage}")
+
+# marine1 = Unit("마린", 40, 5)
+# marine2 = Unit("마린", 40, 5)
+# tank1 = Unit("탱크", 150, 35)
+
+# 33. __init__
+
+# 생성자(객체가 생성되어질때 자동으로 호출되는 메서드)
+# 어떠한 클래스로부터 만들어지는 것들을 객체라고 한다.
+# 이때 만들어진 것들을 해당 클래스의 인스턴스라고 한다.
+
+# class Unit:
+#     def __init__(self, name, hp, damage):
+#         self.name = name
+#         self.hp = hp
+#         self.damage = damage
+#         print(f"{self.name} 유닛이 생성 되었습니다.")
+#         print(f"체력 {self.hp}, 공격력 {self.damage}")
+
+# marine1 = Unit("마린", 40, 5)
+# marine2 = Unit("마린", 40, 5)
+# tank1 = Unit("탱크", 150, 35)
+# __init__ 메서드의 매개변수의 개수를 맞춰줘야 함.
+# tank1 = Unit("탱크", 35)
+
+# 34. 멤버변수
+
+# self.name, self.hp, self.damage 등을 멤버변수라고 한다.
+# 클래스 내에서 정의된 변수
+
+# 레이스 : 공중 유닛, 비행기, 클로킹(상대방에게 보이지 않음)
+
+# class Unit:
+#     def __init__(self, name, hp, damage):
+#         self.name = name
+#         self.hp = hp
+#         self.damage = damage
+#         print(f"{self.name} 유닛이 생성 되었습니다.")
+#         print(f"체력 {self.hp}, 공격력 {self.damage}")
+
+# wraith1 = Unit("레이스", 80, 5)
+# print(f"유닛 이름 : {wraith1.name}, 공격력 : {wraith1.damage}")
+
+# 마인드 컨트롤 : 상대방 유닛을 내 것으로 만드는 것 (빼앗음)
+# 파이썬에서는 클래스 외부에서 추가로 변수를 만들어서 사용할 수가 있음.
+# 단 해당 인스턴스에만 적용
+# wraith2 = Unit("빼앗은 레이스", 80, 5)
+# wraith2.clocking = True
+
+# if wraith2.clocking == True:
+#     print(f"{wraith2.name} 는 현재 클로킹 상태입니다.")
+
+# 35. 메소드
+
+class Unit:
+    def __init__(self, name, hp, damage):
+        self.name = name
+        self.hp = hp
+        self.damage = damage
+        print(f"{self.name} 유닛이 생성 되었습니다.")
+        print(f"체력 {self.hp}, 공격력 {self.damage}")
+
+# 공격 유닛
+# self 자기 자신
+# 클래스 내에서 메소드 내에서 항상 self를 적어놓는다.
+# self 가 없다면 전달받은 매개변수를 사용
+
+class AttackUnit:
+    def __init__(self, name, hp, damage):
+        self.name = name
+        self.hp = hp
+        self.damage = damage
+
+    def attack(self, location):
+        print(f"{self.name} : {location} 방향으로 적군을 공격합니다. [공격력 {self.damage}]")
+
+    def damaged(self, damage):
+        print(f"{self.name} : {damage} 데미지를 입었습니다.")
+        self.hp -= damage
+        print(f"{self.name} : 현재 남은 체력은 {self.hp} 입니다.")
+        if self.hp <= 0:
+            print(f"{self.name} : 파괴되었습니다.")
+
+# 파이어뱃 : 공격 유닛, 화염방사기
+firebat1 = AttackUnit("파이어뱃", 50, 16)
+firebat1.attack("5시")
+
+# 공격 2번 받는다고 가정
+firebat1.damaged(25)
+firebat1.damaged(25)
