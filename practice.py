@@ -956,39 +956,354 @@
 
 # 35. 메소드
 
-class Unit:
-    def __init__(self, name, hp, damage):
-        self.name = name
-        self.hp = hp
-        self.damage = damage
-        print(f"{self.name} 유닛이 생성 되었습니다.")
-        print(f"체력 {self.hp}, 공격력 {self.damage}")
+# class Unit:
+#     def __init__(self, name, hp, damage):
+#         self.name = name
+#         self.hp = hp
+#         self.damage = damage
+#         print(f"{self.name} 유닛이 생성 되었습니다.")
+#         print(f"체력 {self.hp}, 공격력 {self.damage}")
 
 # 공격 유닛
 # self 자기 자신
 # 클래스 내에서 메소드 내에서 항상 self를 적어놓는다.
 # self 가 없다면 전달받은 매개변수를 사용
 
-class AttackUnit:
-    def __init__(self, name, hp, damage):
-        self.name = name
-        self.hp = hp
-        self.damage = damage
+# class AttackUnit:
+#     def __init__(self, name, hp, damage):
+#         self.name = name
+#         self.hp = hp
+#         self.damage = damage
 
-    def attack(self, location):
-        print(f"{self.name} : {location} 방향으로 적군을 공격합니다. [공격력 {self.damage}]")
+#     def attack(self, location):
+#         print(f"{self.name} : {location} 방향으로 적군을 공격합니다. [공격력 {self.damage}]")
 
-    def damaged(self, damage):
-        print(f"{self.name} : {damage} 데미지를 입었습니다.")
-        self.hp -= damage
-        print(f"{self.name} : 현재 남은 체력은 {self.hp} 입니다.")
-        if self.hp <= 0:
-            print(f"{self.name} : 파괴되었습니다.")
+#     def damaged(self, damage):
+#         print(f"{self.name} : {damage} 데미지를 입었습니다.")
+#         self.hp -= damage
+#         print(f"{self.name} : 현재 남은 체력은 {self.hp} 입니다.")
+#         if self.hp <= 0:
+#             print(f"{self.name} : 파괴되었습니다.")
 
 # 파이어뱃 : 공격 유닛, 화염방사기
-firebat1 = AttackUnit("파이어뱃", 50, 16)
-firebat1.attack("5시")
+# firebat1 = AttackUnit("파이어뱃", 50, 16)
+# firebat1.attack("5시")
 
 # 공격 2번 받는다고 가정
-firebat1.damaged(25)
-firebat1.damaged(25)
+# firebat1.damaged(25)
+# firebat1.damaged(25)
+
+# 36. 상속
+
+# 일반 유닛
+
+# class Unit:
+#     def __init__(self, name, hp):
+#         self.name = name
+#         self.hp = hp
+
+# # 공격 유닛
+
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp, damage):
+#         Unit.__init__(self,name,hp)
+#         self.damage = damage
+
+#     def attack(self, location):
+#         print(f"{self.name} : {location} 방향으로 적군을 공격합니다. [공격력 {self.damage}]")
+
+#     def damaged(self, damage):
+#         print(f"{self.name} : {damage} 데미지를 입었습니다.")
+#         self.hp -= damage
+#         print(f"{self.name} : 현재 남은 체력은 {self.hp} 입니다.")
+#         if self.hp <= 0:
+#             print(f"{self.name} : 파괴되었습니다.")
+
+# # 메딕 : 의무병
+
+# # 파이어뱃 : 공격 유닛, 화염방사기
+# firebat1 = AttackUnit("파이어뱃", 50, 16)
+# firebat1.attack("5시")
+
+# # 공격 2번 받는다고 가정
+# firebat1.damaged(25)
+# firebat1.damaged(25)
+
+# 37. 다중상속
+
+# 드랍쉽 : 공중 유닛, 수송기. 마린 / 파이어뱃 / 탱크 등을 수송. 공격 X
+
+# 일반 유닛
+
+# class Unit:
+#     def __init__(self, name, hp):
+#         self.name = name
+#         self.hp = hp
+
+# # 공격 유닛
+# # Unit 상속
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp, damage):
+#         Unit.__init__(self,name,hp)
+#         self.damage = damage
+
+#     def attack(self, location):
+#         print(f"{self.name} : {location} 방향으로 적군을 공격합니다. [공격력 {self.damage}]")
+
+#     def damaged(self, damage):
+#         print(f"{self.name} : {damage} 데미지를 입었습니다.")
+#         self.hp -= damage
+#         print(f"{self.name} : 현재 남은 체력은 {self.hp} 입니다.")
+#         if self.hp <= 0:
+#             print(f"{self.name} : 파괴되었습니다.")
+
+# # 날 수 있는 기능을 가진 클래스
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+    
+#     def fly(self, name, location):
+#         print(f"{name} : {location} 방향으로 날아갑니다. [속도 {self.flying_speed}]")
+
+# # 공중 공격 유닛 클래스
+# # AttackUnit(Unit 상속), Flyable 상속
+# class FlyalbeAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         AttackUnit.__init__(self, name,hp,damage)
+#         Flyable.__init__(self, flying_speed)
+
+# # 발키리 : 공중 공격 유닛, 한번에 14발 미사일 발사.
+# valkyrie = FlyalbeAttackUnit("발키리", 200, 6, 5)
+# valkyrie.fly(valkyrie.name, "3시")
+
+# 38. 메소드 오버라이딩
+
+# 부모 클래스에서 정의한 메소드말고 ,
+# 자식 클래스에서 정의한 메소드를 쓰고 싶을때
+# 메소드를 새롭게 정의해서 사용
+
+# class Unit:
+#     def __init__(self, name, hp, speed):
+#         self.name = name
+#         self.hp = hp
+#         self.speed = speed
+
+#     def move(self, location):
+#         print("[지상 유닛 이동]")
+#         print(f"{self.name} : {location} 방향으로 이동합니다. [속도 {self.speed}]")
+
+# # 공격 유닛
+# # Unit 상속
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp, speed, damage):
+#         Unit.__init__(self,name,hp,speed)
+#         self.damage = damage
+
+#     def attack(self, location):
+#         print(f"{self.name} : {location} 방향으로 적군을 공격합니다. [공격력 {self.damage}]")
+
+#     def damaged(self, damage):
+#         print(f"{self.name} : {damage} 데미지를 입었습니다.")
+#         self.hp -= damage
+#         print(f"{self.name} : 현재 남은 체력은 {self.hp} 입니다.")
+#         if self.hp <= 0:
+#             print(f"{self.name} : 파괴되었습니다.")
+
+# # 날 수 있는 기능을 가진 클래스
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+    
+#     def fly(self, name, location):
+#         print(f"{name} : {location} 방향으로 날아갑니다. [속도 {self.flying_speed}]")
+
+# # 공중 공격 유닛 클래스
+# # AttackUnit(Unit 상속), Flyable 상속
+# class FlyalbeAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         # 지상 speed 0
+#         AttackUnit.__init__(self, name,hp,0,damage)
+#         Flyable.__init__(self, flying_speed)
+
+#     # Unit move() => AttackUnit에 상속 => FlyalbeAttackUnit 상속(move() 재정의)
+#     def move(self, location):
+#         print("[공중 유닛 이동]")
+#         self.fly(self.name, location)
+# # 발키리 : 공중 공격 유닛, 한번에 14발 미사일 발사.
+# valkyrie = FlyalbeAttackUnit("발키리", 200, 6, 5)
+# valkyrie.fly(valkyrie.name, "3시")
+
+# # 벌쳐 : 지상 유닛, 기동성이 좋음
+# vulture = AttackUnit("벌쳐", 80, 10, 20)
+
+# # 배틀크루저 : 공중 유닛, 체력 공격력 좋음
+# battlecruiser = FlyalbeAttackUnit("배틀크루저",500,25,3)
+
+# vulture.move("11시")
+# #battlecruiser.fly(battlecruiser.name, "9시")
+# battlecruiser.move("9시")
+
+# 39. pass
+
+# class Unit:
+#     def __init__(self, name, hp, speed):
+#         self.name = name
+#         self.hp = hp
+#         self.speed = speed
+
+#     def move(self, location):
+#         print("[지상 유닛 이동]")
+#         print(f"{self.name} : {location} 방향으로 이동합니다. [속도 {self.speed}]")
+
+# # 공격 유닛
+# # Unit 상속
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp, speed, damage):
+#         Unit.__init__(self,name,hp,speed)
+#         self.damage = damage
+
+#     def attack(self, location):
+#         print(f"{self.name} : {location} 방향으로 적군을 공격합니다. [공격력 {self.damage}]")
+
+#     def damaged(self, damage):
+#         print(f"{self.name} : {damage} 데미지를 입었습니다.")
+#         self.hp -= damage
+#         print(f"{self.name} : 현재 남은 체력은 {self.hp} 입니다.")
+#         if self.hp <= 0:
+#             print(f"{self.name} : 파괴되었습니다.")
+
+# # 날 수 있는 기능을 가진 클래스
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+    
+#     def fly(self, name, location):
+#         print(f"{name} : {location} 방향으로 날아갑니다. [속도 {self.flying_speed}]")
+
+# # 공중 공격 유닛 클래스
+# # AttackUnit(Unit 상속), Flyable 상속
+# class FlyalbeAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         # 지상 speed 0
+#         AttackUnit.__init__(self, name,hp,0,damage)
+#         Flyable.__init__(self, flying_speed)
+
+#     # Unit move() => AttackUnit에 상속 => FlyalbeAttackUnit 상속(move() 재정의)
+#     def move(self, location):
+#         print("[공중 유닛 이동]")
+#         self.fly(self.name, location)
+
+# # 건물
+# class BuildingUnit(Unit):
+#     def __init__(self, name, hp, location):
+#         pass #아무것도 안하고 일단 넘어간다.(임시완성)
+
+# # 서플라이 디폿 : 건물, 1개 건물 = 8 유닛 인구.
+# supply_depot = BuildingUnit("서플라이 디폿",500,"7시")
+
+# def game_start():
+#     print("[알림] 새로운 게임을 시작합니다.")
+
+# def game_over():
+#     pass
+
+# game_start()
+# game_over()
+
+# 40. super
+
+# class Unit:
+#     def __init__(self, name, hp, speed):
+#         self.name = name
+#         self.hp = hp
+#         self.speed = speed
+
+#     def move(self, location):
+#         print("[지상 유닛 이동]")
+#         print(f"{self.name} : {location} 방향으로 이동합니다. [속도 {self.speed}]")
+
+# # 공격 유닛
+# # Unit 상속
+# class AttackUnit(Unit):
+#     def __init__(self, name, hp, speed, damage):
+#         Unit.__init__(self,name,hp,speed)
+#         self.damage = damage
+
+#     def attack(self, location):
+#         print(f"{self.name} : {location} 방향으로 적군을 공격합니다. [공격력 {self.damage}]")
+
+#     def damaged(self, damage):
+#         print(f"{self.name} : {damage} 데미지를 입었습니다.")
+#         self.hp -= damage
+#         print(f"{self.name} : 현재 남은 체력은 {self.hp} 입니다.")
+#         if self.hp <= 0:
+#             print(f"{self.name} : 파괴되었습니다.")
+
+# # 날 수 있는 기능을 가진 클래스
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+    
+#     def fly(self, name, location):
+#         print(f"{name} : {location} 방향으로 날아갑니다. [속도 {self.flying_speed}]")
+
+# # 공중 공격 유닛 클래스
+# # AttackUnit(Unit 상속), Flyable 상속
+# class FlyalbeAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         # 지상 speed 0
+#         AttackUnit.__init__(self, name,hp,0,damage)
+#         Flyable.__init__(self, flying_speed)
+
+#     # Unit move() => AttackUnit에 상속 => FlyalbeAttackUnit 상속(move() 재정의)
+#     def move(self, location):
+#         print("[공중 유닛 이동]")
+#         self.fly(self.name, location)
+
+# # 건물
+# class BuildingUnit(Unit):
+#     def __init__(self, name, hp, location):
+#         # Unit.__init__(self,name,hp,0)
+#         #Unit 클래스로부터 상속받는 부모 클래스의 초기화에 사용
+#         super().__init__(name,hp,0) #self를 붙이지 않는다.
+#         self.location = location
+
+# # 서플라이 디폿 : 건물, 1개 건물 = 8 유닛 인구.
+# supply_depot = BuildingUnit("서플라이 디폿",500,"7시")
+
+# Quiz) 8 주어진 코드를 활요하여 부동산 프로그램을 작성하시오.
+
+# (출력 예제)
+# 총 3대의 매물이 있습니다.
+# 강남 아파트 매매 10억 2010년
+# 마포 오피스텔 전세 5억 2007년
+# 송파 빌라 월세 500/50 2000년
+
+# [코드]
+# class House:
+#     #매물 초기화
+#     def __init__(self, location, house_type, deal_type, price, completion_year):
+#         self.location = location
+#         self.house_type = house_type
+#         self.deal_type = deal_type
+#         self.price = price
+#         self.completion_year = completion_year
+
+#     #매물 정보 표시
+#     def show_detail(self):
+#         print(self.location, self.house_type, self.deal_type, self.price, self.completion_year)
+
+# houses = []
+# house1 = House("강남", "아파트", "매매", "10억", "2010년")
+# house2 = House("마포", "오피스텔", "전세", "5억", "2007년")
+# house3 = House("송파", "빌라", "월세", "500/50", "2000년")
+
+# houses.append(house1)
+# houses.append(house2)
+# houses.append(house3)
+
+# print(f"총 {len(houses)}대의 매물이 있습니다.")
+# for house in houses:
+#     house.show_detail()
+
+# 42. 예외처리
